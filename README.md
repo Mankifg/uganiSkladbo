@@ -1,6 +1,9 @@
 # Ugani skladbo
 je spletna stran namenjena prepoznavanju skladb.
 
+# Spletna Stran
+[Spletna stran](https://gum.vercel.app/)
+
 # Informacije
 Spletna stran je optimizirana za gostovanje na [Vercelu](https://vercel.com/). Pomen datotek:
 * chopper.py - Izreže 30 sekundne izrezke iz skladb, ki so v [data](data/),
@@ -8,9 +11,7 @@ Spletna stran je optimizirana za gostovanje na [Vercelu](https://vercel.com/). P
 * main.py - Glavna funcionalnost spletne strani.
 
 # Pomoč
-V primeru kakršne koli napake s spletno stranjo, se obrnite na [github]()
-# Spletna Stran
-[Spletna stran](https://gum.vercel.app/)
+V primeru kakršne koli napake s spletno stranjo, se obrnite na [Githubu](https://github.com/Mankifg/uganiSkladbo/issues/new).
 
 # Seznam skladb
 * gregorijanski koral: Veni Creator Spiritus

@@ -1,7 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="sl">
 <head>
-    <title>Guess the Song</title>
+    <title>Ugani skladbo</title>
+    <style>
+        body {
+            font-family: monospace;
+            color: white;
+            background-color: #333;
+            text-align: center;
+            margin: 20px;
+            font-size: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            color: white;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            color: white;
+        }
+
+        audio {
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
     <script>
         async function checkSong() {
             const title = document.getElementById('title').value;
@@ -13,7 +68,7 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: new URLSearchParams({ title, composer,obd }),
+                body: new URLSearchParams({ title, composer, obd }),
             });
 
             const result = await response.json();
@@ -22,23 +77,30 @@
     </script>
 </head>
 <body>
-    <h1>Guess the Song</h1>
-    <audio controls>
-        <source src="/static/{{ mp3_file }}" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-    <form onsubmit="event.preventDefault(); checkSong();">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
-        <br>
-        <label for="composer">Composer:</label>
-        <input type="text" id="composer" name="composer" required>
-        <br>
-        <label for="obd">Obd:</label>
-        <input type="text" id="obd" name="obd" required>
-        <br>
-        <button type="submit">Go</button>
-    </form>
-    <p id="feedback"></p>
-</body>
-</html>
+    <div style="width: 300px; margin: 0 auto;">
+        <h1>Ugani skladbo</h1>
+        <details>
+            Vpiši naslov skladbe, avtorja ter obdobje. Kot povratno informacijo vrne pravilne podatke o skladbi (avtor: naslov - obdobje ter zaporedno številko pesmi).
+            Za napake upošteva vsako napačno črko, najprej je izpisana vsota napak, nate pa še za vsak razdelek posebej (naslov,skladatelj,..).
+            Program uporablja algoritem <a style="color: red" href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>.
+            <summary>
+                <i>Napotki</i> 
+            </summary>
+        </details>
+        <audio controls>
+            <source src="/static/{{ mp3_file }}" type="audio/mp3">
+            Vaš brskalnik ne podpira avdio elementa.
+        </audio>
+        <form onsubmit="event.preventDefault(); checkSong();">
+            <label for="title">Naslov:</label>
+            <input type="text" id="title" name="title" autocomplete="off" required>
+            <br>
+            <label for="composer">Skladatelj:</label>
+            <input type="text" id="composer" name="composer" autocomplete="off" required>
+            <br>
+            <label for="obd">Obdobje:</label>
+            <input type="text" id="obd" name="obd" autocomplete="off" required>
+            <br>
+            <button type="submit">Pošlji</button>
+            <p id="feedback"></p>
+    

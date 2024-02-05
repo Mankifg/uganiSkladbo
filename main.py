@@ -50,5 +50,9 @@ def check_song(title: str = Form(...), composer: str = Form(...), obd: str = For
     }
     
 @app.get("/ping")
-async def hello():
+async def ping():
     return {"res": "pong", "version": __version__, "time": time()}
+
+@app.get("/tos")
+async def tos():
+    return "1. Spletna stran narejena za izobraževalne namene. 2. Ne odgovarjam za morebitne napačne povratne informacije. Z Uporabo te spletne strani se strinjate s Pogoji storitve (ToS)."

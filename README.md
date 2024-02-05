@@ -1,6 +1,14 @@
 # Ugani skladbo
-je spletna stran namenjena prepoznavanju nekaterih skladb.
+je spletna stran namenjena prepoznavanju skladb.
 
+# Informacije
+Spletna stran je optimizirana za gostovanje na [Vercelu](https://vercel.com/). Pomen datotek:
+* chopper.py - Izreže 30 sekundne izrezke iz skladb, ki so v [data](data/),
+* hardstorage.py - Hrani naslove in avtorje skladb,
+* main.py - Glavna funcionalnost spletne strani.
+
+# Pomoč
+V primeru kakršne koli napake s spletno stranjo, se obrnite na [github]()
 # Spletna Stran
 [Spletna stran](https://gum.vercel.app/)
 

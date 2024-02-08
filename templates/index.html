@@ -58,19 +58,32 @@
         }
     </style>
     <script>
+        function refreshPage(){
+            window.location.reload();
+        } 
+
         async function checkSong() {
             const title = document.getElementById('title').value;
             const composer = document.getElementById('composer').value;
             const obd = document.getElementById('obd').value;
+            const cook = document.getElementById('cook').value;
+
+            titleS = title === "" ? "n/a" : title;
+            composerS = composer === "" ? "n/a" : composer;
+            obdS = obd === "" ? "n/a" : obd;
+            cookS = cook === "" ? "n/a" : cook;
+
+            console.log("sending")
+            console.log(composerS)
 
             const response = await fetch('/check_song', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: new URLSearchParams({ title, composer, obd }),
+                body: new URLSearchParams({ titleS, composerS, obdS, cookS}),
             });
-
+        
             const result = await response.json();
             document.getElementById('feedback').innerText = result.feedback;
         }
@@ -93,16 +106,19 @@
         </audio>
         <form onsubmit="event.preventDefault(); checkSong();">
             <label for="title">Naslov:</label>
-            <input type="text" id="title" name="title" autocomplete="off" required>
+            <input type="text" id="title" name="title" autocomplete="off" >
             <br>
             <label for="composer">Skladatelj:</label>
-            <input type="text" id="composer" name="composer" autocomplete="off" required>
+            <input type="text" id="composer" name="composer" autocomplete="off" >
             <br>
             <label for="obd">Obdobje:</label>
-            <input type="text" id="obd" name="obd" autocomplete="off" required>
+            <input type="text" id="obd" name="obd" autocomplete="off" >
+            <br>
+            <input type="hidden" id="cook" name="cook" autocomplete="off" value="{{cook}}" readonly required>
             <br>
             <button type="submit">Pošlji</button>
+            <button type="button" onClick="refreshPage()">Osveži</button>
+           
             <p id="feedback"></p>
-
             <a style="color: white" href="/tos">ToS</a>
     

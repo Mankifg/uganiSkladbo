@@ -1,6 +1,8 @@
 # Ugani skladbo
 je spletna stran namenjena prepoznavanju skladb.
 
+![thumb](assets/images/thumb.png)
+
 # Spletna Stran
 [Spletna stran](https://gum.vercel.app/)
 
